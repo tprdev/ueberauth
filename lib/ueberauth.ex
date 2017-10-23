@@ -198,6 +198,7 @@ defmodule Ueberauth do
 
   @doc false
   def call(%{request_path: request_path, method: method} = conn, opts) do
+    IO.inspect conn
     if strategy = Map.get(opts, {String.replace_trailing(request_path, "/", ""), method}) do
       run!(conn, strategy)
     else
